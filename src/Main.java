@@ -16,9 +16,7 @@ public class Main {
 class Treasure extends JFrame implements ActionListener
 {   JFrame frame;
     BufferedReader br;
-    String a="House";
-    String b="Car";
-    String c="Bike";
+   
     String s1;
     int win=0;
     int value=1;
