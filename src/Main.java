@@ -22,6 +22,7 @@ class Treasure extends JFrame implements ActionListener
     String s1;
     int win=0;
     int value=1;
+ int randomnum;
     int countclk=3;
     Container container;
     JLabel treasure,count,countshow,into;
@@ -30,6 +31,8 @@ class Treasure extends JFrame implements ActionListener
     JButton btn4;
     Treasure(BufferedReader br) throws IOException {//container=new Container();
         frame=new JFrame("Treasure Hunt");
+        Random random = new Random();
+        randomnum = random.nextInt(3) + 1;
 this.br=br;
         frame.setVisible(true);
         frame.setLayout(null);
@@ -108,50 +111,20 @@ btn4.addActionListener(new ActionListener() {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+      
+     
+      
+           if (e.getSource() == btn[0] && randomnum == 1 && countclk >= 0)
+            Winner();
+        if (e.getSource() == btn[1] && randomnum == 1)
+            Winner();
+        if (e.getSource() == btn[2] && randomnum == 3 && countclk >= 0)
+            Winner();
+
         countclk--;
-
-
-        if(e.getSource()==btn[0]&&treasure.getText().equals("House")&&countclk!=0&&value==1)
-        {
-           Winner();
-            countclk=3;
-        }
-        else if(e.getSource()==btn[1]&&treasure.getText().equals("Car")&&countclk!=0&&value==1)
-        {
-           Winner();
-            countclk=3;
-    }
-        else if(e.getSource()==btn[2]&&treasure.getText().equals("Bike")&&countclk!=0&&value==1)
-        {
-            Winner();
-countclk=3;
-        }
+        Random random = new Random();
+        randomnum = random.nextInt(3) + 1;
         countshow.setText(String.valueOf(countclk));
-
-        if(e.getSource()==btn[2]&&treasure.getText().equals("House")&&value==1)
-        {
-            value=0;
-        }
-       else if(e.getSource()==btn[2]&&treasure.getText().equals("House")&&value==0)
-        {
-            Winner();
-        }
-        if(e.getSource()==btn[0]&&treasure.getText().equals("Car")&&value==1)
-        {
-            value=0;
-        }
-        else if(e.getSource()==btn[0]&&treasure.getText().equals("Car")&&value==0)
-        {
-            Winner();
-        }
-        if(e.getSource()==btn[1]&&treasure.getText().equals("Bike")&&value==1)
-        {
-            value=0;
-        }
-        else if(e.getSource()==btn[1]&&treasure.getText().equals("Car")&&value==0)
-        {
-            Winner();
-        }
 
 
 
